@@ -1,0 +1,21 @@
+@import '../../../../node_modules/bulma/sass/utilities/_all';
+
+.input {
+  width: 130px;
+  height: 4rem;
+}
+
+.field {
+  justify-content: center;
+  align-items: center;
+}
+
+.field-label {
+  margin-right: 15px;
+}
+
+@include tablet {
+  .field-body {
+    flex-grow: 1;
+  }
+}
