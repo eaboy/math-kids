@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Operation } from 'src/app/operations.service';
 
 @Component({
   selector: 'app-operation',
@@ -7,10 +8,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class OperationComponent {
 
-  @Input() firstNumber: number;
-  @Input() secondNumber: number;
+  @Input() operation: Operation;
   @Input() result: number = null;
-  @Input() operationSign: string;
   @Output() solved = new EventEmitter<number>();
 
   constructor() { }
