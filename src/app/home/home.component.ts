@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Operation, OperationsService, OperationConfiguration } from '../operations.service';
+import { Operation, OperationsService, OperationConfiguration, OperationResult } from '../operations.service';
 
 @Component({
   selector: 'app-home',
@@ -8,6 +8,7 @@ import { Operation, OperationsService, OperationConfiguration } from '../operati
 })
 export class HomeComponent implements OnInit {
   operation: Operation;
+  solution: number | null = null;
 
   constructor(private operationService: OperationsService) { }
 
@@ -19,7 +20,14 @@ export class HomeComponent implements OnInit {
     this.operation = this.operationService.newAddition(additionConfiguration);
   }
 
-  onSolved(result: number) {
+  onSolved(operationResult: OperationResult) {
+    console.log(this.operationService.checkResult(operationResult));
+  }
+
+  onDigitSent(digit: number) {
+    let solutionString: string = this.solution ? this.solution.toString() : '';
+    solutionString += digit;
+    this.solution = parseInt(solutionString, 10);
   }
 
 }
