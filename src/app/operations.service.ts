@@ -17,10 +17,19 @@ export interface OperationConfiguration {
   operationType?: OperationType;
 }
 
+export interface OperationResult extends Operation {
+  result: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class OperationsService {
+
+  private operationCheckers = {
+    [OperationType.addition]: (firstNumber: number, secondNumber: number) => firstNumber + secondNumber,
+    [OperationType.substraction]: (firstNumber: number, secondNumber: number) => firstNumber - secondNumber
+  };
 
   constructor() { }
 
@@ -34,5 +43,10 @@ export class OperationsService {
 
   private getRandomNumber(maxValue: number, minValue: number = 0): number {
     return Math.floor(Math.random() * maxValue) + minValue;
+  }
+
+  checkResult(operationObject: OperationResult): boolean {
+    const checker = this.operationCheckers[operationObject.operationSign];
+    return operationObject.result === checker(operationObject.firstNumber, operationObject.secondNumber);
   }
 }
