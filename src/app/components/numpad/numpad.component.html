@@ -1,0 +1,4 @@
+<div class="columns is-mobile is-multiline">
+  <div class="column is-one-third" *ngFor="let digit of digits"><button
+      class="button is-primary is-rounded is-large is-fullwidth" (click)=sendDigit.emit(digit)>{{digit}}</button></div>
+</div>
