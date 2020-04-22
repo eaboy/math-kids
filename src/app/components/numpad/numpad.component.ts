@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-numpad',
@@ -8,6 +8,8 @@ import { Component, Output, EventEmitter } from '@angular/core';
 export class NumpadComponent {
   digits: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
+  @Input() disableBackSpace: boolean;
   @Output() sendDigit = new EventEmitter<number>();
+  @Output() deleteDigit = new EventEmitter<boolean>();
 
 }

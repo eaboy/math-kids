@@ -18,8 +18,12 @@
   align-items: center;
 }
 
-.icon.has-text-danger {
-  transform: rotateX(180deg);
+.icon {
+  margin-left: 10px;
+
+  .has-text-danger {
+    transform: rotateX(180deg);
+  }
 }
 
 @include tablet {

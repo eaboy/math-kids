@@ -1,4 +1,13 @@
 <div class="columns is-mobile is-multiline">
-  <div class="column is-one-third" *ngFor="let digit of digits"><button
-      class="button is-primary is-rounded is-large is-fullwidth" (click)=sendDigit.emit(digit)>{{digit}}</button></div>
+  <div class="column is-one-third" *ngFor="let digit of digits">
+    <button class="button is-primary is-rounded is-large is-fullwidth" (click)=sendDigit.emit(digit)>{{digit}}</button>
+  </div>
+  <div class="column is-two-third">
+    <button class="button is-primary is-rounded is-large is-fullwidth" [disabled]="disableBackSpace"
+      (click)=deleteDigit.emit()>
+      <span class="icon is-medium">
+        <i class="fas fa-backspace"></i>
+      </span>
+    </button>
+  </div>
 </div>

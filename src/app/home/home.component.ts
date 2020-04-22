@@ -34,4 +34,8 @@ export class HomeComponent implements OnInit {
     this.solution = parseInt(solutionString, 10);
   }
 
+  onDeletedDigit() {
+    this.solution = parseInt(this.solution.toString().slice(0, -1), 10) || null;
+  }
+
 }
