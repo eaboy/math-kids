@@ -1,10 +1,5 @@
 @import '../../../../node_modules/bulma/sass/utilities/_all';
 
-.input {
-  width: 130px;
-  height: 4rem;
-}
-
 .field {
   justify-content: center;
   align-items: center;
@@ -14,8 +9,17 @@
   margin-right: 15px;
 }
 
+.input {
+  width: 200px;
+  height: 4rem;
+}
+
 .control {
   align-items: center;
+}
+
+.icon.has-text-danger {
+  transform: rotateX(180deg);
 }
 
 @include tablet {

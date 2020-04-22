@@ -11,10 +11,14 @@
           </p>
         </div>
       </div>
+      <span class="icon is-large"
+        [ngClass]="{'has-text-success': correct, 'has-text-danger': !correct, 'is-invisible': !showIcon}">
+        <i class="fas fa-thumbs-up"></i>
+      </span>
     </div>
   </div>
-  <div class="column has-text-centered is-one-third-desktop">
-    <button class="button is-success is-size-3 is-fullwidth" (click)="solve()">
+  <div class="column has-text-centered is-one-third-tablet">
+    <button class="button is-link is-size-3 is-fullwidth" (click)="solve()" [disabled]="result === null">
       <span class="icon is-medium">
         <i class="fas fa-check-circle"></i>
       </span>

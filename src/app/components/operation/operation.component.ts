@@ -10,6 +10,8 @@ export class OperationComponent {
 
   @Input() operation: Operation;
   @Input() result: number | null;
+  @Input() showIcon: boolean;
+  @Input() correct: boolean;
   @Output() solved = new EventEmitter<OperationResult>();
 
   constructor() { }

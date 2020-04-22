@@ -9,6 +9,8 @@ import { Operation, OperationsService, OperationConfiguration, OperationResult }
 export class HomeComponent implements OnInit {
   operation: Operation;
   solution: number | null = null;
+  showIcon = false;
+  correct: boolean;
 
   constructor(private operationService: OperationsService) { }
 
@@ -21,10 +23,12 @@ export class HomeComponent implements OnInit {
   }
 
   onSolved(operationResult: OperationResult) {
-    console.log(this.operationService.checkResult(operationResult));
+    this.showIcon = true;
+    this.correct = this.operationService.checkResult(operationResult);
   }
 
   onDigitSent(digit: number) {
+    this.showIcon = false;
     let solutionString: string = this.solution ? this.solution.toString() : '';
     solutionString += digit;
     this.solution = parseInt(solutionString, 10);

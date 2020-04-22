@@ -1,3 +1,4 @@
-<app-operation [operation]="operation" [result]="solution" (solved)="onSolved($event)">
+<app-operation [operation]="operation" [result]="solution" [showIcon]="showIcon" [correct]="correct"
+  (solved)="onSolved($event)">
 </app-operation>
 <app-numpad (sendDigit)="onDigitSent($event)"></app-numpad>
