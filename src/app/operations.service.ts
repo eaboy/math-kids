@@ -41,7 +41,7 @@ export class OperationsService {
     };
   }
 
-  private getRandomNumber(maxValue: number, minValue: number = 0): number {
+  getRandomNumber(maxValue: number, minValue: number = 0): number {
     return Math.floor(Math.random() * maxValue) + minValue;
   }
 

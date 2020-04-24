@@ -7,13 +7,15 @@
       <div class="field-body">
         <div class="field">
           <p class="control is-flex">
-            <input class="has-text-weight-bold input is-primary is-size-1" type="text" readonly [value]="result">
+            <input class="has-text-weight-bold input is-size-1"
+              [ngClass]="{ 'is-danger': showIcon && !correct, 'is-success': showIcon && correct }" type="text" readonly
+              [value]="result">
           </p>
         </div>
       </div>
       <span class="icon is-large"
         [ngClass]="{'has-text-success': correct, 'has-text-danger': !correct, 'is-invisible': !showIcon}">
-        <i class="fas fa-thumbs-up"></i>
+        <i class="fas" [ngClass]="{ 'fa-times': !correct, 'fa-check': correct }"></i>
       </span>
     </div>
   </div>
