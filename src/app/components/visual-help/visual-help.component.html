@@ -1,1 +1,10 @@
-<p>visual-help works!</p>
+<div class="columns">
+  <div class="column has-text-centered">
+    <span class="icon is-small" [ngStyle]="{color: colorStyleFirstIcon}" *ngFor="let i of firstGroup">
+      <i class="fas" [ngClass]="icon"></i>
+    </span>
+    <span class="icon is-small" [ngStyle]="{color: colorStyleSecondIcon}" *ngFor="let i of secondGroup">
+      <i class="fas" [ngClass]="icon"></i>
+    </span>
+  </div>
+</div>

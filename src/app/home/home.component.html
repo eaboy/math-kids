@@ -1,5 +1,6 @@
+<app-visual-help [operation]="operation"></app-visual-help>
 <app-operation [operation]="operation" [result]="solution" [showIcon]="showIcon" [correct]="correct"
   (solved)="onSolved($event)">
 </app-operation>
-<app-numpad (sendDigit)="onDigitSent($event)" (deleteDigit)=onDeletedDigit($event)
-  [disableBackSpace]="solution === null"></app-numpad>
+<app-numpad (sendDigit)="onDigitSent($event)" (deleteDigit)="onDeletedDigit()" [disableBackSpace]="solution === null">
+</app-numpad>

@@ -41,3 +41,20 @@ export const IconList = [
   'utensil-spoon',
   'volleyball-ball'
 ];
+
+export const ColorList = [
+  'darkkhaki',
+  'salmon',
+  'forestgreen',
+  'darkorange',
+  'olive',
+  'mediumaquamarine',
+  'lightseagreen',
+  'dodgerblue',
+  'slateblue',
+  'purple',
+  'darkslategray',
+  'goldenrod',
+  'chocolate',
+  'maroon'
+];

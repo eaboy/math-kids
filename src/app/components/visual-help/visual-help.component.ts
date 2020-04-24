@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { IconList, ColorList } from './icon-list';
+import { OperationsService, Operation } from 'src/app/operations.service';
 
 @Component({
   selector: 'app-visual-help',
@@ -7,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualHelpComponent implements OnInit {
 
-  constructor() { }
+  @Input() operation: Operation;
+
+  firstGroup: number[];
+  secondGroup: number[];
+
+  icon: string;
+  colorStyleFirstIcon: string;
+  colorStyleSecondIcon: string;
+
+  constructor(private operationsService: OperationsService) { }
 
   ngOnInit(): void {
+    const iconIndex: number = this.operationsService.getRandomNumber(IconList.length, 0);
+    const colorFirstIndex: number = this.operationsService.getRandomNumber(ColorList.length, 0);
+    const colorSecondIndex: number = this.operationsService.getRandomNumber(ColorList.length, 0);
+    this.icon = 'fa-' + IconList[iconIndex];
+    this.colorStyleFirstIcon = ColorList[colorFirstIndex];
+    this.colorStyleSecondIcon = ColorList[colorSecondIndex];
+    this.firstGroup = [...Array(this.operation.firstNumber).keys()];
+    this.secondGroup = [...Array(this.operation.secondNumber).keys()];
   }
 
 }

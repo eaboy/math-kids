@@ -13,7 +13,8 @@ import { VisualHelpComponent } from './visual-help/visual-help.component';
   ],
   exports: [
     OperationComponent,
-    NumpadComponent
+    NumpadComponent,
+    VisualHelpComponent
   ]
 })
 export class ComponentsModule { }
