@@ -23,7 +23,10 @@ export class VisualHelpComponent implements OnInit {
   ngOnInit(): void {
     const iconIndex: number = this.operationsService.getRandomNumber(IconList.length, 0);
     const colorFirstIndex: number = this.operationsService.getRandomNumber(ColorList.length, 0);
-    const colorSecondIndex: number = this.operationsService.getRandomNumber(ColorList.length, 0);
+    let colorSecondIndex: number = this.operationsService.getRandomNumber(ColorList.length, 0);
+    while (colorSecondIndex === colorFirstIndex) {
+      colorSecondIndex = this.operationsService.getRandomNumber(ColorList.length, 0);
+    }
     this.icon = 'fa-' + IconList[iconIndex];
     this.colorStyleFirstIcon = ColorList[colorFirstIndex];
     this.colorStyleSecondIcon = ColorList[colorSecondIndex];
