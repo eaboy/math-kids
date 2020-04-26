@@ -11,20 +11,20 @@ export class HomeComponent implements OnInit {
   solution: number | null = null;
   showIcon = false;
   correct: boolean;
+  secondsToNewOperation = 3;
 
   constructor(private operationService: OperationsService) { }
 
   ngOnInit() {
-    const additionConfiguration: OperationConfiguration = {
-      limit: 10,
-      minValue: 1
-    };
-    this.operation = this.operationService.newAddition(additionConfiguration);
+    this.newOperation();
   }
 
   onSolved(operationResult: OperationResult) {
     this.showIcon = true;
     this.correct = this.operationService.checkResult(operationResult);
+    if (this.correct) {
+      setTimeout(this.newOperation, this.secondsToNewOperation * 1000);
+    }
   }
 
   onDigitSent(digit: number) {
@@ -36,6 +36,17 @@ export class HomeComponent implements OnInit {
 
   onDeletedDigit() {
     this.solution = parseInt(this.solution.toString().slice(0, -1), 10) || null;
+  }
+
+  private newOperation = () => {
+    this.showIcon = false;
+    this.solution = null;
+    this.correct = false;
+    const additionConfiguration: OperationConfiguration = {
+      limit: 10,
+      minValue: 1
+    };
+    this.operation = this.operationService.newAddition(additionConfiguration);
   }
 
 }
