@@ -1,3 +1,5 @@
+@import '../../../../node_modules/bulma/sass/utilities/_all';
+
 .icon {
   margin: 0 2px;
   height: 4vw;
@@ -6,4 +8,10 @@
 
 .fas {
   font-size: 4vw;
+}
+
+@include tablet {
+  .fas {
+    font-size: 3.5vw;
+  }
 }

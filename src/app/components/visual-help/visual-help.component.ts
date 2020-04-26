@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IconList, ColorList } from './icon-list';
 import { OperationsService, Operation } from 'src/app/operations.service';
 
@@ -7,7 +7,7 @@ import { OperationsService, Operation } from 'src/app/operations.service';
   templateUrl: './visual-help.component.html',
   styleUrls: ['./visual-help.component.scss']
 })
-export class VisualHelpComponent implements OnInit {
+export class VisualHelpComponent implements OnChanges {
 
   @Input() operation: Operation;
 
@@ -20,7 +20,13 @@ export class VisualHelpComponent implements OnInit {
 
   constructor(private operationsService: OperationsService) { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.operation.currentValue !== changes.operation.previousValue) {
+      this.updateVisualHelp();
+    }
+  }
+
+  private updateVisualHelp(): void {
     const iconIndex: number = this.operationsService.getRandomNumber(IconList.length, 0);
     const colorFirstIndex: number = this.operationsService.getRandomNumber(ColorList.length, 0);
     let colorSecondIndex: number = this.operationsService.getRandomNumber(ColorList.length, 0);
