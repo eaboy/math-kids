@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Operation, OperationsService, OperationResult, OperationConfiguration } from '../operations.service';
 
 @Component({
-  selector: 'app-addition',
-  templateUrl: './addition.component.html',
-  styleUrls: ['./addition.component.scss']
+  selector: 'app-operations-page',
+  templateUrl: './operations-page.component.html',
+  styleUrls: ['./operations-page.component.scss']
 })
-export class AdditionComponent implements OnInit {
+export class OperationsPageComponent implements OnInit {
   operation: Operation;
   solution: number | null = null;
   showIcon = false;

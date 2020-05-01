@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
-  { path: 'addition', loadChildren: () => import('./addition/addition.module').then(m => m.AdditionModule) }
+  { path: 'operations', loadChildren: () => import('./operations-page/operations-page.module').then(m => m.OperationsPageModule) }
 ];
 
 @NgModule({
