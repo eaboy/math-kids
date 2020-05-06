@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Operation, OperationsService, OperationResult, OperationConfiguration } from '../operations.service';
+import { StatusService } from '../status.service';
 
 @Component({
   selector: 'app-operations-page',
@@ -13,7 +14,7 @@ export class OperationsPageComponent implements OnInit {
   correct: boolean;
   secondsToNewOperation = 3;
 
-  constructor(private operationService: OperationsService) { }
+  constructor(private operationService: OperationsService, private statusService: StatusService) { }
 
   ngOnInit() {
     this.newOperation();
