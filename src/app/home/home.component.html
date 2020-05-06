@@ -1,6 +1,6 @@
 <div class="columns">
   <div class="column is-offset-one-fifth-mobile is-offset-one-third is-one-third is-two-thirds-mobile">
-    <form [formGroup]="operationConfig">
+    <form [formGroup]="operationConfig" (ngSubmit)="startOperations()">
       <div class="field">
         <label for="secondsToNewOperation" class="label">Seconds between operations:</label>
         <input formControlName="secondsToNewOperation" class="input is-info" type="number" name="secondsToNewOperation"
@@ -22,6 +22,7 @@
           </div>
         </div>
       </div>
+      <button class="button is-success">Start!</button>
     </form>
   </div>
 </div>

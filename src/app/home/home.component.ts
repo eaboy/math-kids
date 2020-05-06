@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { OperationType } from '../operations.service';
+import { StatusService, OperationsPageConfiguration } from '../status.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +19,12 @@ export class HomeComponent {
     operationType: new FormControl(OperationType.addition)
   });
 
-  constructor() { }
+  constructor(private statusService: StatusService, private router: Router) { }
 
-
+  startOperations() {
+    const configuration: OperationsPageConfiguration = this.operationConfig.value;
+    this.statusService.operationPageConfiguration = configuration;
+    this.router.navigateByUrl('operations');
+  }
 
 }
