@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Operation, OperationsService, OperationResult, OperationConfiguration } from '../operations.service';
+import { Operation, OperationsService, OperationResult, OperationConfiguration, OperationType } from '../operations.service';
 import { StatusService } from '../status.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class OperationsPageComponent implements OnInit {
   solution: number | null = null;
   showIcon = false;
   correct: boolean;
-  secondsToNewOperation = 3;
+  secondsToNewOperation = this.statusService.operationPageConfiguration.secondsToNewOperation;
 
   constructor(private operationService: OperationsService, private statusService: StatusService) { }
 
@@ -43,11 +43,12 @@ export class OperationsPageComponent implements OnInit {
     this.showIcon = false;
     this.solution = null;
     this.correct = false;
-    const additionConfiguration: OperationConfiguration = {
+    const operationConfiguration: OperationConfiguration = {
       limit: 10,
-      minValue: 1
+      minValue: 1,
+      operationType: this.statusService.operationPageConfiguration.operationType
     };
-    this.operation = this.operationService.newAddition(additionConfiguration);
+    this.operation = this.operationService.newOperation(operationConfiguration);
   }
 
 }
