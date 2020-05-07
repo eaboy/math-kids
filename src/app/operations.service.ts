@@ -14,7 +14,7 @@ export enum OperationType {
 export interface OperationConfiguration {
   limit: number;
   minValue?: number;
-  operationType?: OperationType;
+  operationType: OperationType;
 }
 
 export interface OperationResult extends Operation {
@@ -33,11 +33,18 @@ export class OperationsService {
 
   constructor() { }
 
-  newAddition(operationConfiguration: OperationConfiguration): Operation {
+  newOperation(operationConfiguration: OperationConfiguration): Operation {
+    const operationGenerators = {
+      [OperationType.addition]: this.newAddition
+    };
+    return operationGenerators[operationConfiguration.operationType](operationConfiguration);
+  }
+
+  private newAddition = (operationConfiguration: OperationConfiguration): Operation => {
     return {
       firstNumber: this.getRandomNumber(operationConfiguration.limit, operationConfiguration.minValue),
       secondNumber: this.getRandomNumber(operationConfiguration.limit, operationConfiguration.minValue),
-      operationSign: OperationType.addition
+      operationSign: operationConfiguration.operationType
     };
   }
 
