@@ -35,7 +35,8 @@ export class OperationsService {
 
   newOperation(operationConfiguration: OperationConfiguration): Operation {
     const operationGenerators = {
-      [OperationType.addition]: this.newAddition
+      [OperationType.addition]: this.newAddition,
+      [OperationType.substraction]: this.newSubstraction
     };
     return operationGenerators[operationConfiguration.operationType](operationConfiguration);
   }
@@ -44,6 +45,16 @@ export class OperationsService {
     return {
       firstNumber: this.getRandomNumber(operationConfiguration.limit, operationConfiguration.minValue),
       secondNumber: this.getRandomNumber(operationConfiguration.limit, operationConfiguration.minValue),
+      operationSign: operationConfiguration.operationType
+    };
+  }
+
+  private newSubstraction = (operationConfiguration: OperationConfiguration): Operation => {
+    const firstNumber: number = this.getRandomNumber(operationConfiguration.limit, operationConfiguration.minValue);
+    const secondNumber: number = this.getRandomNumber(firstNumber, operationConfiguration.minValue);
+    return {
+      firstNumber,
+      secondNumber,
       operationSign: operationConfiguration.operationType
     };
   }

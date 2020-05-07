@@ -15,8 +15,8 @@
         <div class="control">
           <label for="operationType" class="label">Operation type:</label>
           <div class="select is-info">
-            <select id="operationType" name="operationType" class="is-capitalized">
-              <option value="operationType.value" *ngFor="let operationType of operationTypesArray">
+            <select id="operationType" name="operationType" class="is-capitalized" formControlName="operationType">
+              <option *ngFor="let operationType of operationTypesArray" [ngValue]="operationType.value">
                 {{ operationType.name }}</option>
             </select>
           </div>
