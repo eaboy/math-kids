@@ -3,13 +3,19 @@
     <form [formGroup]="operationConfig" (ngSubmit)="startOperations()">
       <div class="field">
         <label for="secondsToNewOperation" class="label">Seconds between operations:</label>
-        <input formControlName="secondsToNewOperation" class="input is-info" type="number" name="secondsToNewOperation"
-          id="secondsToNewOperation">
+        <input formControlName="secondsToNewOperation" class="input is-info"
+          [ngClass]="{ 'is-danger': operationConfig.controls.secondsToNewOperation.invalid}" type="number" min="1"
+          name="secondsToNewOperation" id="secondsToNewOperation" required>
+        <p class="help is-danger" *ngIf="operationConfig.controls.secondsToNewOperation.invalid">Set the number of
+          seconds between operations</p>
       </div>
       <div class="field">
         <label for="totalOperations" class="label">Number of operations:</label>
-        <input formControlName="totalOperations" class="input is-info" type="number" min="1" name="totalOperations"
-          id="totalOperations">
+        <p class="help">0 means no limit</p>
+        <input formControlName="totalOperations" class="input is-info"
+          [ngClass]="{ 'is-danger': operationConfig.controls.totalOperations.invalid}" type="number" min="0"
+          name="totalOperations" id="totalOperations" required>
+        <p class="help is-danger" *ngIf="operationConfig.controls.totalOperations.invalid">Set at least 1 operation</p>
       </div>
       <div class="field">
         <div class="control">
@@ -22,7 +28,7 @@
           </div>
         </div>
       </div>
-      <button class="button is-success">Start!</button>
+      <button class="button is-success" [disabled]="operationConfig.invalid">Start!</button>
     </form>
   </div>
 </div>
