@@ -13,6 +13,7 @@ export class OperationsPageComponent implements OnInit {
   showIcon = false;
   correct: boolean;
   secondsToNewOperation = this.statusService.operationPageConfiguration.secondsToNewOperation;
+  success = false;
 
   constructor(private operationService: OperationsService, private statusService: StatusService) { }
 

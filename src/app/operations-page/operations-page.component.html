@@ -1,6 +1,8 @@
-<app-visual-help [operation]="operation"></app-visual-help>
-<app-operation [operation]="operation" [result]="solution" [showIcon]="showIcon" [correct]="correct"
+<app-visual-help *ngIf="!success" [operation]="operation"></app-visual-help>
+<app-operation *ngIf="!success" [operation]="operation" [result]="solution" [showIcon]="showIcon" [correct]="correct"
   [secondsToNewOperation]="secondsToNewOperation" (solved)="onSolved($event)">
 </app-operation>
-<app-numpad (sendDigit)="onDigitSent($event)" (deleteDigit)="onDeletedDigit()" [disableBackSpace]="solution === null">
+<app-numpad *ngIf="!success" (sendDigit)="onDigitSent($event)" (deleteDigit)="onDeletedDigit()"
+  [disableBackSpace]="solution === null">
 </app-numpad>
+<app-success *ngIf="success"></app-success>
