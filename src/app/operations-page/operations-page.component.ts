@@ -11,9 +11,9 @@ export class OperationsPageComponent implements OnInit {
   operation: Operation;
   solution: number | null = null;
   showIcon = false;
-  correct: boolean;
+  isCorrect: boolean;
   secondsToNewOperation = this.statusService.operationPageConfiguration.secondsToNewOperation;
-  success = false;
+  isSuccess = false;
 
   constructor(private operationService: OperationsService, private statusService: StatusService) { }
 
@@ -22,10 +22,15 @@ export class OperationsPageComponent implements OnInit {
   }
 
   onSolved(operationResult: OperationResult) {
+    this.isCorrect = this.operationService.checkResult(operationResult);
     this.showIcon = true;
-    this.correct = this.operationService.checkResult(operationResult);
-    if (this.correct) {
-      setTimeout(this.newOperation, this.secondsToNewOperation * 1000);
+    if (this.isCorrect) {
+      this.statusService.operationPageConfiguration.totalOperations--;
+      if (this.statusService.operationPageConfiguration.totalOperations) {
+        setTimeout(this.newOperation, this.secondsToNewOperation * 1000);
+      } else {
+        this.isSuccess = true;
+      }
     }
   }
 
@@ -43,7 +48,7 @@ export class OperationsPageComponent implements OnInit {
   private newOperation = () => {
     this.showIcon = false;
     this.solution = null;
-    this.correct = false;
+    this.isCorrect = false;
     const operationConfiguration: OperationConfiguration = {
       limit: 10,
       minValue: 1,

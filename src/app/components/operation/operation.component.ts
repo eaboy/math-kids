@@ -11,7 +11,7 @@ export class OperationComponent implements OnChanges {
   @Input() operation: Operation;
   @Input() result: number | null;
   @Input() showIcon: boolean;
-  @Input() correct: boolean;
+  @Input() isCorrect: boolean;
   @Input() secondsToNewOperation: number;
   @Output() solved = new EventEmitter<OperationResult>();
   overlayWidth = 0;
@@ -19,7 +19,7 @@ export class OperationComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(change: SimpleChanges) {
-    if (change.correct?.currentValue) {
+    if (change.isCorrect?.currentValue) {
       const interval = setInterval(() => {
         this.overlayWidth++;
         if (this.overlayWidth === 100) {
