@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { IconList, ColorList } from './icon-list';
-import { OperationsService, Operation } from 'src/app/operations.service';
+import { OperationsService, Operation, OperationType } from 'src/app/operations.service';
 
 @Component({
   selector: 'app-visual-help',
@@ -37,7 +37,8 @@ export class VisualHelpComponent implements OnChanges {
     this.colorStyleFirstIcon = ColorList[colorFirstIndex];
     this.colorStyleSecondIcon = ColorList[colorSecondIndex];
     this.firstGroup = [...Array(this.operation.firstNumber).keys()];
-    this.secondGroup = [...Array(this.operation.secondNumber).keys()];
+    this.secondGroup = this.operation.operationSign === OperationType.addition ?
+      [...Array(this.operation.secondNumber).keys()] : [];
   }
 
 }

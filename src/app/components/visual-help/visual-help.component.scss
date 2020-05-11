@@ -1,17 +1,36 @@
 @import '../../../../node_modules/bulma/sass/utilities/_all';
 
 .icon {
-  margin: 0 2px;
+  margin: 0 3px;
   height: 4vw;
   width: 4vw;
 }
 
 .fas {
   font-size: 4vw;
+
+  .removed & {
+
+    opacity: .5;
+  }
+}
+
+.removed {
+
+  &:after {
+    content: 'X';
+    position: absolute;
+    font-size: 5vw;
+    color: red;
+  }
 }
 
 @include tablet {
   .fas {
     font-size: 3.5vw;
+  }
+
+  .removed:after {
+    font-size: 4.5vw;
   }
 }

@@ -1,6 +1,7 @@
 <div class="columns">
   <div class="column has-text-centered">
-    <span class="icon" [ngStyle]="{color: colorStyleFirstIcon}" *ngFor="let i of firstGroup">
+    <span class="icon is-relative" [ngStyle]="{color: colorStyleFirstIcon}" *ngFor="let i of firstGroup; index as index"
+      [ngClass]="{removed: !secondGroup.length && index >= operation.firstNumber - operation.secondNumber}">
       <i class="fas" [ngClass]="icon"></i>
     </span>
     <span class="icon" [ngStyle]="{color: colorStyleSecondIcon}" *ngFor="let i of secondGroup">
