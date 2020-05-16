@@ -1,4 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+$primary: #f2855e;
+$secondary: #d7eef2;
+$tertiary: #194769;
+$background: #f6f6e9;
+$family-secondary: 'Barrio',
+cursive;
+
+$body-background-color: $background;
+$info: $secondary;
+$link: $tertiary;
+
 @import "../node_modules/bulma/bulma.sass";
-@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barrio&display=swap');
 @import 'scss/common';
