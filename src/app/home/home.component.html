@@ -18,6 +18,18 @@
         <p class="help is-danger" *ngIf="operationConfig.controls.totalOperations.invalid">Set at least 1 operation</p>
       </div>
       <div class="field">
+        <label for="showVisualHelp" class="label">Show visual help:</label>
+        <input formControlName="showVisualHelp" type="radio" hidden id="showVisualHelp" name="showVisualHelp">
+        <div class="buttons has-addons">
+          <button type="button" class="button"
+            [ngClass]="{ 'is-selected is-success': operationConfig.controls.showVisualHelp.value}"
+            (click)="onShowVisualHelpChanged()">Yes</button>
+          <button type="button" class="button"
+            [ngClass]="{ 'is-selected is-danger': !operationConfig.controls.showVisualHelp.value}"
+            (click)="onShowVisualHelpChanged()">No</button>
+        </div>
+      </div>
+      <div class="field">
         <div class="control">
           <label for="operationType" class="label">Operation type:</label>
           <div class="select is-info">

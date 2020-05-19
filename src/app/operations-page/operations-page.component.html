@@ -1,4 +1,5 @@
-<app-visual-help *ngIf="!isSuccess" [operation]="operation"></app-visual-help>
+<app-visual-help *ngIf="showVisualHelp && !isSuccess" [operation]="operation">
+</app-visual-help>
 <app-operation *ngIf="!isSuccess" [operation]="operation" [result]="solution" [showIcon]="showIcon"
   [isCorrect]="isCorrect" [secondsToNewOperation]="secondsToNewOperation" (solved)="onSolved($event)">
 </app-operation>

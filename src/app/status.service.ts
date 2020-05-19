@@ -5,6 +5,7 @@ export interface OperationsPageConfiguration {
   operationType: OperationType;
   secondsToNewOperation: number;
   totalOperations: number;
+  showVisualHelp: boolean;
 }
 @Injectable({
   providedIn: 'root'

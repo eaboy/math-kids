@@ -14,6 +14,7 @@ export class OperationsPageComponent implements OnInit {
   isCorrect: boolean;
   secondsToNewOperation = this.statusService.operationPageConfiguration.secondsToNewOperation;
   isSuccess = false;
+  showVisualHelp = this.statusService.operationPageConfiguration.showVisualHelp;
 
   constructor(private operationService: OperationsService, private statusService: StatusService) { }
 

@@ -16,7 +16,8 @@ export class HomeComponent {
   operationConfig = new FormGroup({
     secondsToNewOperation: new FormControl(3, [Validators.min(1)]),
     totalOperations: new FormControl(10, [Validators.min(0)]),
-    operationType: new FormControl(OperationType.addition)
+    operationType: new FormControl(OperationType.addition),
+    showVisualHelp: new FormControl(true)
   });
 
   constructor(private statusService: StatusService, private router: Router) { }
@@ -25,6 +26,10 @@ export class HomeComponent {
     const configuration: OperationsPageConfiguration = this.operationConfig.value;
     this.statusService.operationPageConfiguration = configuration;
     this.router.navigateByUrl('operations');
+  }
+
+  onShowVisualHelpChanged(): void {
+    this.operationConfig.controls.showVisualHelp.setValue(!this.operationConfig.controls.showVisualHelp.value);
   }
 
 }
