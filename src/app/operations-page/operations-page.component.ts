@@ -51,7 +51,7 @@ export class OperationsPageComponent implements OnInit {
     this.solution = null;
     this.isCorrect = false;
     const operationConfiguration: OperationConfiguration = {
-      limit: 10,
+      limit: this.statusService.operationPageConfiguration.maxOperatorValue,
       minValue: 1,
       operationType: this.statusService.operationPageConfiguration.operationType
     };
